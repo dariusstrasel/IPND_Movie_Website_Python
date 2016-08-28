@@ -1,6 +1,9 @@
 import media
-import fresh_tomatoes
+import fresh_tomatoes # Fresh Tomatoes is a HTML/CSS Python generator which generates HTML/CSS using first-class object
+# methods and objects attributes to define HTML/CSS meta-data.
 
+
+# Lines 7-70 creates object instances of "Movie":
 toy_story = media.Movie("Toy Story",
                         "A story of a boy and his toys that come to life.",
                         "http://img.lum.dolimg.com/v1/images/open-uri20150422-20810-m8zzyx_5670999f.jpeg",
@@ -65,7 +68,6 @@ tgm = media.Movie("The Green Mile",
                             "Frank Darabont",
                             "1999",
                             "https://www.youtube.com/watch?v=uDybmxbKf4Y")
-
 
 
 movies = [toy_story, spirited_away, shawshank, pulp, inception, matrix, cog, interstellar, tgm]
