@@ -20,6 +20,7 @@ main_page_head = '''
             position: relative;
             display: inline-block;
         }
+        /* This is the style selectors for the tooltip which appears when hovering over a movie-tile. */
         .movie-tile .tooltiptext {
             visibility: hidden;
             width: 120px;
@@ -35,6 +36,7 @@ main_page_head = '''
             opacity: 0;
             transition: opacity 1s;
         }
+        /*This determines the position of the tooltip. */
         .movie-tile .tooltiptext::after {
             content: "";
             position: absolute;
@@ -45,20 +47,10 @@ main_page_head = '''
             border-style: solid;
             border-color: transparent transparent transparent #EEE;
         }
+        /* This CSS selector will show the tooltip upon hovering the mouse above .movie-tile class. */
         .movie-tile:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
-        }
-        .growimg {
-              -webkit-transition: all 1s ease;
-                 -moz-transition: all 1s ease;
-                   -o-transition: all 1s ease;
-                  -ms-transition: all 1s ease;
-                      transition: all 1s ease;
-        }
-        .growimg:hover {
-              width: 100%;
-              height: 110%;
         }
         body #movie-tile{
             background-image: url("https://www.colourbox.com/preview/11019817-rows-of-red-cinema-or-theater-seats-in-front-of-black-screen-with-sample-text-space-vector.jpg")
@@ -93,6 +85,7 @@ main_page_head = '''
             color: #FFFFFF;
             text-shadow: 5px 5px 10px #000000;
         }
+        /* This applies an animation to movie-tile upon hover. */
         .movie-tile:hover {
             background-color: #EEE;
             color: black;
