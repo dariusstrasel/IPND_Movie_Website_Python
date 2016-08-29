@@ -20,4 +20,6 @@ class Movie(Video):
         self.trailer_youtube_url = trailer_youtube
 
     def show_trailer(self):
+        """This method will call open a webbrowser to view the trailer for the Movie class object it is instantiated
+        from. """
         webbrowser.open(self.trailer_youtube_url)
