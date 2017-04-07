@@ -2,7 +2,7 @@ import webbrowser
 
 
 class Video():
-    """Parent class of Movie. Used to hold high-;evel attributes which all media may share. The child, Movie inherits
+    """Parent class of Movie. Used to hold high-level attributes which all media may share. The child, Movie inherits
     a number of said attributes."""
     def __init__(self, title, storyline, poster_url, author, year):
         self.title = title
