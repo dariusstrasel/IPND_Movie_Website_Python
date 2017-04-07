@@ -27,4 +27,4 @@ models.Movie("Spirited Away",
 ```
 
 # Screenshot:
-![Screenshot](https://github.com/dariusstrasel/Movie-Website-Object-Orientated-/blob/master/Capture.PNG)
+![Screenshot](https://raw.githubusercontent.com/dariusstrasel/Movie-Website-Object-Orientated-/master/Capture.PNG)
