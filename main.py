@@ -232,7 +232,8 @@ def open_movies_page(movies):
     output_file = create_html()
     output_file.close()
     url = os.path.abspath(output_file.name)
-    webbrowser.open('file://' + url, new=2)
+    webbrowser.open('file://'
+                    + url, new=2)
 
 
 def main():
