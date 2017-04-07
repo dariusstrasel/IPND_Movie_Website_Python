@@ -1,7 +1,8 @@
 import webbrowser
 import os
 import re
-
+import data
+from string import Template
 
 # Styles and scripting for the page
 main_page_head = '''
@@ -137,7 +138,6 @@ main_page_head = '''
 </head>
 '''
 
-
 # The main page layout and title bar
 main_page_content = '''
   <body>
@@ -171,23 +171,19 @@ main_page_content = '''
 '''
 
 
-# A single movie entry html template
-movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <div class="growimg">
-        <img src="{poster_image_url}" width="220" height="342"></img>
-    </div>
-    <span class="tooltiptext">{storyline}</span>
-    <h2>{movie_title}</h2>
-    <h3>{author}</h3>
-    <h4>{year}</h4>
-</div>
-'''
-
-
-
 def create_movie_tiles_content(movies):
-    # The HTML content for this section of the page
+    """Parses movie model data and generates HTML elements using model structure."""
+    movie_tile_content = '''
+    <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+        <div class="growimg">
+            <img src="{poster_image_url}" width="220" height="342"></img>
+        </div>
+        <span class="tooltiptext">{storyline}</span>
+        <h2>{movie_title}</h2>
+        <h3>{author}</h3>
+        <h4>{year}</h4>
+    </div>
+    '''
     content = ''
     for movie in movies:
         # Extract the youtube ID from the url
@@ -210,18 +206,39 @@ def create_movie_tiles_content(movies):
     return content
 
 
+def read_template(name):
+    template_url = 'templates/' + name
+    template = open(template_url)
+    contents = Template(template.read())
+    return contents
+
+
 def open_movies_page(movies):
-    # Create or overwrite the output file
-    output_file = open('fresh_tomatoes.html', 'w')
 
-    # Replace the movie tiles placeholder generated content
-    rendered_content = main_page_content.format(
-        movie_tiles=create_movie_tiles_content(movies))
-
-    # Output the file
-    output_file.write(main_page_head + rendered_content)
-    output_file.close()
+    def create_html():
+        # Create or overwrite the output file
+        output_file = open('output/fresh_tomatoes.html', 'w')
+        page_content = read_template('index.html')
+        # Replace the movie tiles placeholder generated content
+        # rendered_content = main_page_content.format(
+        #     movie_tiles=create_movie_tiles_content(movies))
+        data = {'movie_tiles': create_movie_tiles_content(movies)}
+        rendered_content = page_content.substitute(data)
+        # Output the file
+        output_file.write(rendered_content)
+        return output_file
 
     # open the output file in the browser (in a new tab, if possible)
+    output_file = create_html()
+    output_file.close()
     url = os.path.abspath(output_file.name)
     webbrowser.open('file://' + url, new=2)
+
+
+def main():
+    open_movies_page(data.movies)
+    # read_template('index.html')
+
+
+if __name__ == "__main__":
+    main()
