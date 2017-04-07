@@ -18,7 +18,7 @@ models.Movie("Spirited Away",
 
 3.  Profit!
 
-#API Documentation
+# API Documentation
 * HTML is processed using Python standard string.Template class. (No templating engine!) And is looking for $movie_tiles:
 ```html
     <div class="container" id="movie-tile">
@@ -26,5 +26,5 @@ models.Movie("Spirited Away",
     </div>
 ```
 
-#Screenshot:
-![N|Solid](capture.png)
+# Screenshot:
+![Screenshot](capture.png)
